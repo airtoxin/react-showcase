@@ -1,6 +1,6 @@
 {
   "name": "react-showcase",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "React.js component that helps compoent showcases",
   "main": "lib/index.js",
   "scripts": {
@@ -14,7 +14,7 @@
     "type": "git",
     "url": "git+https://github.com/airtoxin/react-showcase.git"
   },
-  "keywords": [],
+  "keywords": ["react", "react-component", "showcase", "atomic design"],
   "author": "airtoxin <airtoxin@icloud.com>",
   "license": "MIT",
   "bugs": {
@@ -37,8 +37,5 @@
     "react": "15.3.0",
     "react-addons-test-utils": "15.3.0",
     "react-dom": "15.3.0"
-  },
-  "dependencies": {
-    "aphrodite": "0.5.0"
   }
 }
