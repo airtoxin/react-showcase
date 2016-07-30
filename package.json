@@ -7,7 +7,8 @@
     "build": "rimraf lib && babel src -d lib --copy-files",
     "watch": "rimraf lib && babel src -d lib --copy-files -w",
     "lint": "eslint {src,test} --fix",
-    "test": "npm run lint && mocha --compilers js:babel-register test "
+    "test": "npm run lint && mocha --compilers js:babel-register test",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
