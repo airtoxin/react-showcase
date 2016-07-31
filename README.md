@@ -11,7 +11,7 @@ Make it easy to create your own react component showcase site.
 ```js
 import showcase from 'react-showcase';
 
-const myComponents = [Form, Button];
+const myComponents = [Input, Button];
 const showcases = myComponents.map(Component => {
   const Showcase = showcase(Component);
   reutrn <Showcase key={Component.name}/>
@@ -30,11 +30,37 @@ It shows...
 
 ## Api
 
-### `showcase(Component)` (default exported)
+### `showcase(Component)` function (default exported)
 
-This function returns showcase component of `Component` argument.
+__return__: `Showcase` component
 
-### `defaultStyles` (named exported)
+This function returns your `Component` wrapped by `Showcase` component.
+
+### `defaultStyles` object (named exported)
+
+If you want to override showcase component styles, this can be used for base styling.
+
+### `Showcase` component
+
+`<Showcase styles={myStyles} />`
+
+It has styles property to override showcase styles.
+
+```js
+import { defaultStyles } from "react-showcase";
+
+const myStyles = Object.assign({}, defaultStyles, {
+  article: { border: "dashed 2px red" }
+});
+
+const Wrapped = showcase(MyComponent);
+ReactDOM.render(
+  <Wrapped styles={myStyles} />,
+  document.getElementById("showcase")
+);
+```
+
+![](styledShowcase.png)
 
 ## License
 
