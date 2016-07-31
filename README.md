@@ -1,4 +1,4 @@
-# react-showcase
+# react-showcase [![Build Status](https://travis-ci.org/airtoxin/react-showcase.svg?branch=master)](https://travis-ci.org/airtoxin/react-showcase)
 
 Make it easy to create your own react component showcase site.
 
