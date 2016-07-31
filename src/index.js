@@ -2,41 +2,44 @@ import React from 'react';
 
 export const defaultStyles = {
   article: {
-    margin: "20px 20px 40px 20px",
-    display: "flex",
-    flexDirection: "column"
+    margin: '20px 20px 40px',
+    padding: 5,
+    display: 'flex',
+    flexDirection: 'column',
+    border: 'dashed 2px gray',
   },
   componentDiv: {
-    display: "flex",
-    flexDirection: "column",
-    marginBottom: 10
+    display: 'flex',
+    flexDirection: 'column',
+    marginBottom: 10,
   },
   componentLabel: {
-    marginLeft: -10,
-    width: "100%"
+    marginLeft: -15,
+    marginTop: -30,
+    width: '100%',
   },
   propsDiv: {},
   propsLabel: {},
-  propsUl: {
-    marginTop: -3
-  },
+  propsUl: {},
   propsLi: {},
-  propsInput: {}
+  propsInput: {},
 };
 
 export default function showcase(Component) {
   const defaultProps = Component.defaultProps || {};
 
-  return class Showcase extends React.Component {
-    constructor() {
-      super();
+  class Showcase extends React.Component {
+    constructor(props) {
+      super(props);
       this.state = defaultProps;
     }
 
     render() {
+      const style = this.props.styles;
+
       const Props = Object.keys(defaultProps).map(key => (
-        <li key={key} style={defaultStyles.propsLi}>{key}: <input
-          style={defaultStyles.propsInput}
+        <li key={key} style={style.propsLi}>{key}: <input
+          style={style.propsInput}
           type="text"
           placeholder={`${key}=${defaultProps[key]}`}
           value={this.state[key]}
@@ -45,17 +48,26 @@ export default function showcase(Component) {
       ));
 
       return (
-        <article style={defaultStyles.article}>
-          <div style={defaultStyles.componentDiv}>
-            <label style={defaultStyles.componentLabel}>{Component.name}</label>
+        <article style={style.article}>
+          <label style={style.componentLabel}>{Component.name}</label>
+          <div style={style.componentDiv}>
             <Component {...this.state} />
           </div>
-          <div style={defaultStyles.propsDiv}>
-            <label style={defaultStyles.propsLabel}>props</label>
-            <ul style={defaultStyles.propsUl}>{Props}</ul>
+          <div style={style.propsDiv}>
+            <label style={style.propsLabel}>props</label>
+            <ul style={style.propsUl}>{Props}</ul>
           </div>
         </article>
       );
     }
+  }
+
+  Showcase.propTypes = {
+    styles: React.PropTypes.object,
   };
+  Showcase.defaultProps = {
+    styles: defaultStyles,
+  };
+
+  return Showcase;
 }
