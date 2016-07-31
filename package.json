@@ -1,6 +1,6 @@
 {
   "name": "react-showcase",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "React.js component that helps compoent showcases",
   "main": "lib/index.js",
   "scripts": {
