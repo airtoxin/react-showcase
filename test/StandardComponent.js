@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 
 export default class StandardComponent extends React.Component {
   constructor(props) {
@@ -10,15 +11,15 @@ export default class StandardComponent extends React.Component {
 
   render() {
     return (
-      <h1 onClick={() => this.setState({ count: this.state.count + 1 })}>
+      <button onClick={() => this.setState({ count: this.state.count + 1 })}>
         Count: {this.state.count}
-      </h1>
+      </button>
     );
   }
 }
 
 StandardComponent.propTypes = {
-  initialValue: React.PropTypes.number,
+  initialValue: PropTypes.number,
 };
 
 StandardComponent.defaultProps = {

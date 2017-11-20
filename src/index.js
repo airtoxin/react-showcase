@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 
 export const defaultStyles = {
   article: {
@@ -44,7 +45,8 @@ export default function showcase(Component) {
           placeholder={`${key}=${defaultProps[key]}`}
           value={this.state[key]}
           onChange={e => this.setState({ [key]: e.target.value })}
-        /></li>
+        />
+        </li>
       ));
 
       return (
@@ -63,7 +65,7 @@ export default function showcase(Component) {
   }
 
   Showcase.propTypes = {
-    styles: React.PropTypes.object,
+    styles: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   };
   Showcase.defaultProps = {
     styles: defaultStyles,
