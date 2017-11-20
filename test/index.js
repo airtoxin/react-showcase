@@ -1,9 +1,12 @@
 import assert from 'assert';
 import React from 'react';
-import { shallow } from 'enzyme';
+import { configure, shallow } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import StandardComponent from './StandardComponent';
 
 import showcase, { defaultStyles } from '../src';
+
+configure({ adapter: new Adapter() });
 
 describe('showcase function', () => {
   let Wrapped;
