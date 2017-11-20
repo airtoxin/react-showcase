@@ -3,11 +3,13 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import StandardComponent from './StandardComponent';
 
-import showcase, { defaultStyles } from '../src/index.js';
+import showcase, { defaultStyles } from '../src';
 
 describe('showcase function', () => {
   let Wrapped;
-  beforeEach(() => (Wrapped = showcase(StandardComponent)));
+  beforeEach(() => {
+    Wrapped = showcase(StandardComponent);
+  });
 
   it('should be a higher order component', () => {
     assert.strictEqual(shallow(<Wrapped />).contains(<StandardComponent />), true);
@@ -16,14 +18,16 @@ describe('showcase function', () => {
   it("should have wrapped component's default props as a state", () => {
     assert.deepEqual(
       shallow(<Wrapped initialValue={132} />).state(),
-      StandardComponent.defaultProps
+      StandardComponent.defaultProps,
     );
   });
 });
 
 describe('Showcase component', () => {
   let Wrapped;
-  beforeEach(() => (Wrapped = showcase(StandardComponent)));
+  beforeEach(() => {
+    Wrapped = showcase(StandardComponent);
+  });
 
   it('should have defaultProps and propTypes properties', () => {
     assert.deepEqual(Wrapped.defaultProps, {
